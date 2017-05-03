@@ -18,7 +18,7 @@ xvalues = linspace(0,2*pi,M);
 yvalues = linspace(0,2*pi,N);
 
 F = Functionzz(xvalues,yvalues);
-% F=zeros(numXp2,numYp2);
+% F=zeros(M,N);uncomment it for F=0
    tic;% starting the timer
 % Bounds for the Equation 
 
