@@ -56,6 +56,9 @@ Iterations=0; %Initial value of iteration to start the counter
 %Performing Gauss Seidel Approximations 
 save('Variables.mat') %Saves variables to file for checkpointing
 % check for diagonal dominance of elements 
+
+%%
+load('Variables.mat')
 abs(DEN) >= abs(2*DX+2*DY)
 while EI>ER;
   
