@@ -9,7 +9,7 @@ bx = 2*pi;
 by = 2*pi; 
 MI=input('Value of X Intenal Nodes='); % Number of points on the internal nodes for N and M%
 NI=input('Value of Y Internal Nodes='); 
-tic
+tic; % starting the timer
 M=NI+2; %Number of points including exterior boundary points for Ne and Me%
 N=MI+2; 
 % this generates the x and y values that will be used to calculate 
@@ -18,7 +18,7 @@ yvalues = linspace(0,2*pi,N);
 
 F = Functionzz(xvalues,yvalues);
 % F=zeros(M,N);
-   tic;% starting the timer
+  
 % Bounds for the Equation 
 
 Er=10^-10 ; %Value of error for system convergence
@@ -42,22 +42,28 @@ Error = zeros(N,M-2);
 %   Using the given neumann condition yields special cases of the Gauss-siedel iteration that can be used along entire "side" boundaries. 
 %   F and U is computed in solution grid 
 % Multipliers that are used in the iterations. 
-L=2*pi
+L=2*pi;
 DX = L/(MI+1); 
 DX = 1/DX.^2;
 DY = L/(NI+1); 
 DY = 1/DY.^2;
 DEN= -2*(DX+DY); 
-
+timecap= 100; % checkpoint to save variavle every 100 seconds
 EI=10; %Initial guess for error
-ER=10^-10  %Value of error for system convergence
-Iterations=0 %Initial value of iteration to start the counter
+ER=10^-10 ; %Value of error for system convergence
+Iterations=0 ;%Initial value of iteration to start the counter
 %Performing Gauss Seidel Approximations 
 save('Variables.mat') %Saves variables to file for checkpointing
 % check for diagonal dominance of elements 
-abs(DEN) >= abs(2*DX+2*DY)
-while EI>ER
-    W=U; 
+abs(DEN) >= abs(2*DX+2*DY);
+while EI>ER;
+
+Tcounter=tic;
+if Tcounter>timecap;
+  save('Variables.mat');
+  Tcounter=0;
+end
+   
 %Left Nuemann conditions
 for i = 2:M-1; 
      
