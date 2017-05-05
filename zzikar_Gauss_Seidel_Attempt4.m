@@ -93,7 +93,7 @@ end
 TotalIterations=Iterations
 Time=toc;
 Totaltime=Time
-grid_ind=mean(mean(U.^2))
+grid_ind=mean(mean(U.^2))% to check for grid convergence
 figure 
 subplot(1,2,1),surf(U),xlabel('x axis'),ylabel('y axis'),title('F=cos(x)sin(y)');
 
