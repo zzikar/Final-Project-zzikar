@@ -61,7 +61,9 @@ save('Variables.mat') %Saves variables to file for checkpointing
 load('Variables.mat')
 abs(DEN) >= abs(2*DX+2*DY)
 while EI>ER;
-  
+  if Iterations > 10000 
+     save('Variables.mat')
+ end
 %Left Nuemann conditions
 for i = 2:M-1; 
      
@@ -93,6 +95,6 @@ TotalIterations=Iterations
 Time=toc;
 Totaltime=Time
 figure 
-subplot(1,2,1),surf(U),xlabel('x axis'),ylabel('y axis'),title('F=cos(x)sin(y)');
+subplot(1,2,1),surf(U),xlabel('x axis'),ylabel('y axis'),title('F=cos(x)sin(y)'); %F=0 for part 2
 
 subplot(1,2,2),contour(U),xlabel('x axis'),ylabel('y axis'),title('F=cos(x)sin(y)');
