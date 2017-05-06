@@ -57,13 +57,9 @@ save('Variables.mat') %Saves variables to file for checkpointing
 % check for diagonal dominance of elements 
 abs(DEN) >= abs(2*DX+2*DY);
 while EI>ER;
-
-Tcounter=tic;
-if Tcounter>timecap;
-  save('Variables.mat');
-  Tcounter=0;
-end
-   
+   if Iterations > 10000 
+     save('Variables.mat')
+ end
 %Left Nuemann conditions
 for i = 2:M-1; 
      
