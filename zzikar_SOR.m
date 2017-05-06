@@ -1,5 +1,5 @@
 %Matlab Code to solve Poisson's equation with Gauss Seidel Method with the following conditions in the problem statement. 
-% Zainab Zikar 1378939 Gauss Siedel 
+% Zainab Zikar 1378939 SOR Method
 clear all; clc; 
 
 %% Given Conditions 
@@ -92,8 +92,7 @@ EI=abs(max(max(((W-U)./W))));
 Iterations=Iterations+1;
 end 
 TotalIterations=Iterations
-Time=toc;
-Totaltime=Time
+Time=toc %stops the timer
 figure 
 subplot(1,2,1),surf(U),xlabel('x axis'),ylabel('y axis'),title('F=cos(x)sin(y)'); %F=0 for part 2
 
